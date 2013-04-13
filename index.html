@@ -2,7 +2,7 @@
 <html xmlns:ng="http://angularjs.org" data-ng-app>
 <head>
     <title>Days Since BTB</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' />
     <style>
         html, body {
             background-color: cyan;
@@ -40,29 +40,33 @@
 </head>
 <body>
     <div id="content">
-        <div id="time">
+        <div id="time" data-ng-controller="CounterCtrl">
             <div class="unit">
-                <div id="days"></div>
+                <div data-ng-bind="days"></div>
                 <label>days</label>
             </div>
             <div class="unit">
-                <div id="hours"></div>
+                <div data-ng-bind="hours"></div>
                 <label>hours</label>
             </div>
             <div class="unit">
-                <div id="minutes"></div>
+                <div data-ng-bind="minutes"></div>
                 <label>minutes</label>
             </div>
             <div class="unit">
-                <div id="seconds"></div>
+                <div data-ng-bind="seconds"></div>
                 <label>seconds</label>
             </div>
         </div>
-        <div id="epitaph"></div>
+        <div id="epitaph" data-ng-controller="EpitaphCtrl">
+            since our beloved {{noun}} left us
+        </div>
         <img src="img/btb.jpg" alt="The infamous BTB">
-        <div id="story"></div>
+        <div id="story" data-ng-controller="StoryCtrl">
+            Day {{days}}: in a post BTB society: Today the {{subject}} {{action}}
+        </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
     <script src="js/days.js" ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
 </body>
 </html>
