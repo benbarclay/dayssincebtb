@@ -1,32 +1,72 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" data-ng-app>
 <head>
     <title>Days Since BTB</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <script src="js/days.js" ></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' />
+    <style>
+        html, body {
+            background-color: cyan;
+        }
+        .unit {
+            display: inline-block;
+            /* IE hack for inline-block */
+            zoom:1;
+            *display:inline;
+            /* END: IE hack */
+        }
+        #content {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 300px;
+            text-align: center;
+            background-color: magenta;
+            padding-bottom: 10px;
+        }
+        #content > img {
+            padding-top: 10px; padding-bottom: 10px;
+        }
+        #time {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            background-color: black;
+            font-size: 20;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #epitaph {
+            padding-top: 10px;
+        }
+    </style>
 </head>
-<body style="background-color: cyan">
-    <div id="content" style="margin-left: auto; margin-right: auto; max-width: 300px; text-align: center; background-color: magenta; padding-bottom: 10px;">
-        <div id="time" style="font-family: 'Roboto', sans-serif; color: white; background-color: black; font-size: 20; padding-top: 10px; padding-bottom: 10px;">
-            <div style="display: inline-block;">
-                <div id="days"></div>
-                <div>days</div>
+<body>
+    <div id="content">
+        <div id="time" data-ng-controller="CounterCtrl">
+            <div class="unit">
+                <div data-ng-bind="days"></div>
+                <label>days</label>
             </div>
-            <div style="display: inline-block;">
-                <div id="hours"></div>
-                <div>hours</div>
+            <div class="unit">
+                <div data-ng-bind="hours"></div>
+                <label>hours</label>
             </div>
-            <div style="display: inline-block;">
-                <div id="minutes"></div>
-                <div>minutes</div>
+            <div class="unit">
+                <div data-ng-bind="minutes"></div>
+                <label>minutes</label>
             </div>
-            <div style="display: inline-block;">
-                <div id="seconds"></div>
-                <div>seconds</div>
+            <div class="unit">
+                <div data-ng-bind="seconds"></div>
+                <label>seconds</label>
             </div>
         </div>
-        <div id="epitaph" style="padding-top: 10px;"></div>
-        <img src="img/btb.jpg" alt="The infamous BTB" style="padding-top: 10px; padding-bottom: 10px;">
-        <div id="story"></div>
+        <div id="epitaph" data-ng-controller="EpitaphCtrl">
+            since our beloved {{noun}} left us
+        </div>
+        <img src="img/btb.jpg" alt="The infamous BTB">
+        <div id="story" data-ng-controller="StoryCtrl">
+            Day {{days}}: in a post BTB society: Today the {{subject}} {{action}}
+        </div>
     </div>
+    <script src="js/days.js" ></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
 </body>
 </html>
